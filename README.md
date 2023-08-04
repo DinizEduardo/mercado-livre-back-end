@@ -74,3 +74,65 @@ Os compradores podem avaliar e deixar feedback sobre os produtos e a experiênci
 ## Conclusão
 
 Este documento fornece uma visão geral dos principais casos de uso do Mercado Livre. Existem muitas outras funcionalidades e recursos disponíveis na plataforma, mas os casos de uso descritos acima representam as principais interações dos usuários com o sistema. Certifique-se de verificar a documentação oficial do Mercado Livre para obter mais detalhes e informações atualizadas.
+
+# Entidades
+
+## Buyer
+  Classe que representa o comprador, o usuario logado que efetuará ações de compra
+  ### Campos
+    - id
+    - name
+    - email
+    - number
+
+## Seller
+  Classe que representa o vendedor, o usuario logado que efetuará ações de venda
+  ### Campos
+    - id
+    - name
+    - email
+    - number
+
+## Product
+  Classe que representa o produto que alguem cadastrou para vender
+  ### Campos
+    - id
+    - idSeller
+    - name
+    - description 
+    - value
+    - amount
+
+## Cart
+  Classe que representa o carrinho de um usuario comprador (buyer)
+  ### Campos
+  - id
+  - idBuyer
+
+## ProductInCart
+  Classe que representa um produto que está no carrinho
+  ### Campos 
+    - id
+    - idProduct
+    - idCart
+    - amount
+    - unitValue
+
+## Sale
+  Classe que representa a conclusão de um carrinho
+  ### Campos
+    - id
+    - idBuyer
+    - idCart
+    - totalValue
+    - status - DECLINED | ACCEPTED | PEDING
+
+## Card
+  Classe que representa um cartão do comprador
+  ### Campos
+    - id
+    - nickname
+    - number
+    - expires
+    - cvv
+    - owner
