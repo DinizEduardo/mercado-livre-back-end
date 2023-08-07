@@ -1,5 +1,12 @@
 import { randomUUID } from 'node:crypto'
 
+export interface ProductProps {
+  name: string
+  descricao: string
+  value: number
+  amount: number
+}
+
 export class Product {
   public id: string
   public name: string
@@ -7,11 +14,11 @@ export class Product {
   public value: number
   public amount: number
 
-  constructor(name: string, descricao: string, value: number, amount: number, id?: string){
-    this.name = name
-    this.descricao = descricao
-    this.value = value
-    this.amount = amount
+  constructor(props: ProductProps, id?: string){
+    this.name = props.name
+    this.descricao = props.descricao
+    this.value = props.value
+    this.amount = props.amount
     this.id = id ?? randomUUID()
   }
 
