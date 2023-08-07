@@ -7,6 +7,10 @@ interface RegisterBuyerRequest {
   password: string
 }
 
+interface RegisterBuyerResponse {
+  buyer: Buyer
+}
+
 export class RegisterBuyerUseCase {
   constructor(private buyerRepository: BuyerRepository) {}
 
@@ -14,7 +18,7 @@ export class RegisterBuyerUseCase {
     email,
     name,
     password,
-  }: RegisterBuyerRequest): Promise<void> {
+  }: RegisterBuyerRequest): Promise<RegisterBuyerResponse> {
     const emailAlreadyExists = await this.buyerRepository.findOneByEmail(email)
 
     if (emailAlreadyExists) {
@@ -24,5 +28,7 @@ export class RegisterBuyerUseCase {
     const buyer = Buyer.create({ email, name, password })
 
     await this.buyerRepository.create(buyer)
+
+    return { buyer }
   }
 }
