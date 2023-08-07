@@ -1,4 +1,4 @@
-import { Buyer } from "../entities/buyer";
+import { Buyer } from '@/domain/entities/buyer'
 
 export interface BuyerRepository {
   create(buyer: Buyer): Promise<void>
