@@ -1,11 +1,10 @@
-import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryBuyerRepository } from '../../../test/in-memory-buyer-repository'
 import { RegisterBuyerUseCase } from './register-buyer'
 
 let inMemoryBuyerRepository: InMemoryBuyerRepository
 let sut: RegisterBuyerUseCase
 
-describe('aaaaa', () => {
+describe('Register buyer use-case', () => {
   beforeEach(() => {
     inMemoryBuyerRepository = new InMemoryBuyerRepository()
     sut = new RegisterBuyerUseCase(inMemoryBuyerRepository)

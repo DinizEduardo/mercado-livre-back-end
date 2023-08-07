@@ -1,5 +1,5 @@
-import { Buyer } from "../entities/buyer";
-import { BuyerRepository } from "../repositories/buyer-repository";
+import { Buyer } from "@/domain/entities/buyer";
+import { BuyerRepository } from "@/domain/repositories/buyer-repository";
 
 interface RegisterBuyerRequest {
   name: string
