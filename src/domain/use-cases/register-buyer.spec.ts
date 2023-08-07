@@ -11,27 +11,27 @@ describe('Register buyer use-case', () => {
   })
 
   it('should be able to register a new buyer', async () => {
-    const buyer = await sut.execute({
+    await sut.execute({
       email: 'eduardo@diniz.com',
       name: 'Eduardo Diniz',
-      password: '123456'
+      password: '123456',
     })
 
     expect(inMemoryBuyerRepository.items[0].email).toBe('eduardo@diniz.com')
   })
 
-  it('should not be able to register a new buyer when e-mail already exists', async() => {
+  it('should not be able to register a new buyer when e-mail already exists', async () => {
     await sut.execute({
       email: 'eduardo@diniz.com',
       name: 'Eduardo Diniz',
-      password: '123456'
+      password: '123456',
     })
 
     await expect(async () => {
       await sut.execute({
         email: 'eduardo@diniz.com',
         name: 'Eduardo Diniz 2',
-        password: '654321'
+        password: '654321',
       })
     }).rejects.toBeInstanceOf(Error)
 

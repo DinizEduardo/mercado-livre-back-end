@@ -5,8 +5,7 @@ export interface CartProps {
   status: 'OPEN' | 'ACCEPTED' | 'DECLINED'
 }
 
-export class Cart extends Entity<CartProps>  {
-  
+export class Cart extends Entity<CartProps> {
   get idBuyer() {
     return this.props.idBuyer
   }
@@ -14,5 +13,4 @@ export class Cart extends Entity<CartProps>  {
   get status() {
     return this.props.status
   }
-
 }

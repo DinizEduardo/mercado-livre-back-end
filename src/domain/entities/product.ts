@@ -8,7 +8,6 @@ export interface ProductProps {
 }
 
 export class Product extends Entity<ProductProps> {
-  
   get name() {
     return this.props.name
   }
@@ -24,5 +23,4 @@ export class Product extends Entity<ProductProps> {
   get amount() {
     return this.props.amount
   }
-
 }

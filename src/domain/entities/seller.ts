@@ -6,12 +6,11 @@ export interface SellerProps {
 }
 
 export class Seller extends Entity<SellerProps> {
-  
-  get  name() {
+  get name() {
     return this.props.name
   }
-  get  email() {
+
+  get email() {
     return this.props.email
   }
-
 }

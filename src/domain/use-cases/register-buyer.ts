@@ -1,5 +1,5 @@
-import { Buyer } from "@/domain/entities/buyer";
-import { BuyerRepository } from "@/domain/repositories/buyer-repository";
+import { Buyer } from '@/domain/entities/buyer'
+import { BuyerRepository } from '@/domain/repositories/buyer-repository'
 
 interface RegisterBuyerRequest {
   name: string
@@ -8,23 +8,21 @@ interface RegisterBuyerRequest {
 }
 
 export class RegisterBuyerUseCase {
+  constructor(private buyerRepository: BuyerRepository) {}
 
-  constructor(
-    private buyerRepository: BuyerRepository
-  ){}
-
-  async execute({email, name, password}: RegisterBuyerRequest): Promise<void> {
-
+  async execute({
+    email,
+    name,
+    password,
+  }: RegisterBuyerRequest): Promise<void> {
     const emailAlreadyExists = await this.buyerRepository.findOneByEmail(email)
 
     if (emailAlreadyExists) {
       throw new Error('Email já cadastrado')
     }
 
-    const buyer = Buyer.create({email, name, password})
+    const buyer = Buyer.create({ email, name, password })
 
     await this.buyerRepository.create(buyer)
-
   }
-
 }

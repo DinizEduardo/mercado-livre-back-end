@@ -7,16 +7,15 @@ export interface BuyerProps {
   password: string
 }
 
-export class Buyer extends Entity<BuyerProps>{
-
+export class Buyer extends Entity<BuyerProps> {
   get name() {
     return this.props.name
   }
-  
+
   get email() {
     return this.props.email
   }
-  
+
   get password() {
     return this.props.password
   }
@@ -24,13 +23,11 @@ export class Buyer extends Entity<BuyerProps>{
   static create(props: BuyerProps, id?: UniqueEntityID) {
     const buyer = new Buyer(
       {
-        ...props
+        ...props,
       },
-      id
+      id,
     )
 
     return buyer
   }
-  
-
 }
