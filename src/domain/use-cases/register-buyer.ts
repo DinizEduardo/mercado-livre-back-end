@@ -1,5 +1,6 @@
 import { Buyer } from '@/domain/entities/buyer'
 import { BuyerRepository } from '@/domain/repositories/buyer-repository'
+import { hash } from 'bcryptjs'
 
 interface RegisterBuyerRequest {
   name: string
@@ -25,7 +26,9 @@ export class RegisterBuyerUseCase {
       throw new Error('Email já cadastrado')
     }
 
-    const buyer = Buyer.create({ email, name, password })
+    const passwordHash = await hash(password, 6)
+
+    const buyer = Buyer.create({ email, name, password: passwordHash })
 
     await this.buyerRepository.create(buyer)
 

@@ -1,3 +1,4 @@
+import { compare } from 'bcryptjs'
 import { InMemoryBuyerRepository } from '../../../test/in-memory-buyer-repository'
 import { RegisterBuyerUseCase } from './register-buyer'
 
@@ -18,6 +19,9 @@ describe('Register buyer use-case', () => {
     })
 
     expect(inMemoryBuyerRepository.items[0].email).toBe('eduardo@diniz.com')
+    expect(
+      await compare('123456', inMemoryBuyerRepository.items[0].password),
+    ).toBe(true)
   })
 
   it('should not be able to register a new buyer when e-mail already exists', async () => {
