@@ -1,19 +1,24 @@
-import { randomUUID } from 'node:crypto'
+import { Entity } from '../../core/entities/entity'
 
 export interface BuyerProps {
   name: string
   email: string
+  password: string
 }
 
-export class Buyer {
-  public id: string
-  public name: string
-  public email: string
+export class Buyer extends Entity<BuyerProps>{
 
-  constructor(props: BuyerProps, id?: string){
-    this.name = props.name
-    this.email = props.email
-    this.id = id ?? randomUUID()
+  get name() {
+    return this.props.name
   }
+  
+  get email() {
+    return this.props.email
+  }
+  
+  get password() {
+    return this.props.password
+  }
+  
 
 }
